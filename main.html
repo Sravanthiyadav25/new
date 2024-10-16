@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, width=device-width, height=device-height, user-scalable=no">
+    <title>student details</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #e0e0e0, #b0c4de);
+            border-radius: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        .back-button, .nav-button, .de {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            width: 120px;
+            height: 150px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .nav-button:hover, .back-button:hover {
+            background-color: #45a049;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .day {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            color: #e3d5d5;
+            font-weight: bold;
+        }
+
+        .present { background-color: #4CAF50; }
+        .absent { background-color: #e74c3c; }
+        .marks-container {
+            width: 50%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .marks-table {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            border-collapse: collapse;
+        }
+
+        .marks-table th, .marks-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .marks-table th {
+            background-color: #4CAF50;
+            color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .marks-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+            justify-content: center;
+            align-items: center;
+        }
+        .fee-section, .table-container {
+            margin-bottom: 20px;
+
+             justify-content: center;
+            align-items: center;
+
+        }
+
+        .fee-section p {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .table-container h3 {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            justify-content: center;
+            align-items: center;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        td a {
+            color: #1a73e8;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+            justify-content: center;
+            align-items: center;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <!--main1 page-->
+    <div id="main1Page" class="container visible">
+        <div class="id-card">
+            <img src="https://c.stocksy.com/a/Jmn700/z9/1859647.jpg" alt="Profile Photo" style="width:120px; height:150px;"> 
+            <h2>GUNNALA SRAVABTHI YADAV</h2>
+            <p>ID: 23N81A05B5</p>
+            <p>Course: Computer Science Engineering</p>
+            <p>Year: 2nd Year</p>
+    
+            <div class="nav-buttons">
+                <button class="back-button" onclick="navigateTo('mainPage')">Next</button>
+            </div>
+        </div>
+        </div>
+    
+    <!-- Navigation Page -->
+    <div id="mainPage" class="container">
+        <h2>Navigation</h2>
+        <button onclick="navigateTo('attendancePage')" class="nav-button">Attendance</button>
+        <button onclick="navigateTo('marksPage')" class="nav-button">Marks</button>
+        <button onclick="navigateTo('feesPage')" class="nav-button">Fees Details</button>
+        <button onclick="navigateTo('profilePage')" class="nav-button">Profile</button>
+        <button class="back-button" onclick="navigateTo('main1Page')">Back</button> 
+
+    </div>
+
+    <!-- Attendance Page -->
+    <div id="attendancePage" class="container">
+        <h2>Attendance</h2>
+        <h3>July 2024</h3>        
+        <div class="days-grid">
+            <div class="day present">1</div>
+                <div class="day absent">2</div>
+                <div class="day present">3</div>
+                <div class="day absent">4</div>
+                <div class="day absent">5</div>
+                <div class="day present">6</div>
+                <div class="day present">7</div>
+                <div class="day present">8</div>
+                <div class="day present">9</div>
+                <div class="day present">10</div>
+                <div class="day absent">11</div>
+                <div class="day absent">12</div>
+                <div class="day present">13</div>
+                <div class="day present">14</div>
+                <div class="day present">15</div>
+                <div class="day present">16</div>
+                <div class="day present">17</div>
+                <div class="day absent">18</div>
+                <div class="day present">19</div>
+                <div class="day present">20</div>
+                <div class="day present">21</div>
+                <div class="day present">22</div>
+                <div class="day absent">23</div>
+                <div class="day present">24</div>
+                <div class="day present">25</div>
+                <div class="day present">26</div>
+                <div class="day absent">27</div>
+                <div class="day present">28</div>
+                <div class="day present">29</div>
+                <div class="day absent">30</div>
+            </div>
+        
+
+
+            <h3>August 2024</h3>        
+            <div class="days-grid">
+                <div class="day present">1</div>
+                <div class="day absent">2</div>
+                <div class="day present">3</div>
+                <div class="day present">4</div>
+                <div class="day absent">5</div>
+                <div class="day present">6</div>
+                <div class="day present">7</div>
+                <div class="day absent">8</div>
+                <div class="day present">9</div>
+                <div class="day present">10</div>
+                <div class="day absent">11</div>
+                <div class="day present">12</div>
+                <div class="day present">13</div>
+                <div class="day present">14</div>
+                <div class="day absent">15</div>
+                <div class="day present">16</div>
+                <div class="day present">17</div>
+                <div class="day absent">18</div>
+                <div class="day present">19</div>
+                <div class="day present">20</div>
+                <div class="day present">21</div>
+                <div class="day present">22</div>
+                <div class="day absent">23</div>
+                <div class="day present">24</div>
+                <div class="day present">25</div>
+                <div class="day present">26</div>
+                <div class="day absent">27</div>
+                <div class="day present">28</div>
+                <div class="day present">29</div>
+                <div class="day absent">30</div>
+            </div>
+            <h3>September 2024</h3>        
+            <div class="days-grid">
+                <div class="day present">1</div>
+                <div class="day absent">2</div>
+                <div class="day present">3</div>
+                <div class="day present">4</div>
+                <div class="day absent">5</div>
+                <div class="day present">6</div>
+                <div class="day present">7</div>
+                <div class="day present">8</div>
+                <div class="day present">9</div>
+                <div class="day present">10</div>
+                <div class="day absent">11</div>
+                <div class="day absent">12</div>
+                <div class="day present">13</div>
+                <div class="day present">14</div>
+                <div class="day absent">15</div>
+                <div class="day present">16</div>
+                <div class="day present">17</div>
+                <div class="day absent">18</div>
+                <div class="day absent">19</div>
+                <div class="day present">20</div>
+                <div class="day absent">21</div>
+                <div class="day present">22</div>
+                <div class="day absent">23</div>
+                <div class="day present">24</div>
+                <div class="day present">25</div>
+                <div class="day present">26</div>
+                <div class="day absent">27</div>
+                <div class="day present">28</div>
+                <div class="day present">29</div>
+                <div class="day absent">30</div>
+            </div>
+        
+
+
+            
+    <button class="back-button" onclick="navigateTo('mainPage')">Back</button>
+</div>
+
+    <!-- Marks Page -->
+     
+    <div id="marksPage" class="container">
+        <h1>Marks Page</h1>
+        <button onclick="navigateTo('sem1Page')" class="nav-button">sem-1 marks</button>
+        <button onclick="navigateTo('sem2Page')" class="nav-button">sem-2 marks</button>
+        <button onclick="navigateTo('sem3Page')" class="nav-button">sem-3 marks</button>
+        <button onclick="navigateTo('sem4Page')" class="nav-button">sem-4 marks</button>  
+        <button onclick="navigateTo('sem5Page')" class="nav-button">sem-5 marks</button>
+        <button onclick="navigateTo('sem6page')" class="nav-button">sem-6 marks</button>  
+        <button onclick="navigateTo('sem7Page')" class="nav-button">sem-7 marks</button>
+        <button onclick="navigateTo('sem8Page')" class="nav-button">sem-8 marks</button>  
+        <button class="back-button" onclick="navigateTo('mainPage')">Back</button>
+   </div>
+   <div id="sem1Page" class="container">
+    <div class="marks-container">
+        <h2>Sem 1-1 Marks</h2>
+        <table class="marks-table">
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>ODEVC</td>
+                <td>4.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>AP</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>EW</td>
+                <td>4.00</td>
+                <td>A+</td>
+            </tr>
+            <tr>
+                <td>ESE</td>
+                <td>2.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>EDC</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>ELCS</td>
+                <td>2.00</td>
+                <td>C</td>
+            </tr>
+        </table>
+        <button class="de" onclick="navigateTo('mainPage')">Back</button>
+</div>
+</div>
+<div id="sem2Page" class="container">
+    <div class="marks-container">
+        <h2>Sem 1-2 Marks</h2>
+        <table class="marks-table">
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>ODEVC</td>
+                <td>4.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>AP</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>EW</td>
+                <td>4.00</td>
+                <td>A+</td>
+            </tr>
+            <tr>
+                <td>ESE</td>
+                <td>2.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>EDC</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>ELCS</td>
+                <td>2.00</td>
+                <td>C</td>
+            </tr>
+        </table>
+        <button class="de" onclick="navigateTo('marksPage')">Back</button>
+</div>
+</div>
+<div id="sem3Page" class="container">
+    <div class="marks-container">
+        <h2>Sem 2-1 Marks</h2>
+        <table class="marks-table">
+          <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>ODEVC</td>
+                <td>4.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>AP</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>EW</td>
+                <td>4.00</td>
+                <td>A+</td>
+            </tr>
+            <tr>
+                <td>ESE</td>
+                <td>2.00</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>EDC</td>
+                <td>4.00</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>ELCS</td>
+                <td>2.00</td>
+                <td>C</td>
+            </tr>
+        </table>
+        <button class="de" onclick="navigateTo('marksPage')">Back</button>
+</div>
+</div>
+<div id="sem4Page" class="container">
+    <div class="marks-container">
+        <h2>Sem 2-2 Marks</h2>
+        <h2>----------</h2>
+        <button class="de" onclick="navigateTo('marksPage')">Back</button>
+        </div>
+        </div>
+<div id="sem5Page" class="container">
+            <div class="marks-container">
+                <h2>Sem 3-1 Marks</h2>
+                <h2>----------</h2>
+                <button class="de" onclick="navigateTo('marksPage')">Back</button>
+                </div>
+                </div>
+<div id="sem6page" class="container">
+                    <div class="marks-container">
+                        <h2>Sem 3-2 Marks</h2>
+                        <h2>----------</h2>
+                        <button class="de" onclick="navigateTo('marksPage')">Back</button>
+                        </div>
+                        </div>
+<div id="sem7Page" class="container">
+                            <div class="marks-container">
+                                <h2>Sem 4-1 Marks</h2>
+                                <h2>----------</h2>
+                                <button class="de" onclick="navigateTo('marksPage')">Back</button>
+                                </div>
+                                </div>
+<div id="sem8Page" class="container">
+                    <div class="marks-container">
+                        <h2>Sem 4-2 Marks</h2>
+                        <h2>----------</h2>
+                        <button class="de" onclick="navigateTo('marksPage')">Back</button>
+                        </div>
+                        </div>
+    <!-- Fees Page -->
+    <div id="feesPage" class="container">
+        <h2>Fees Details</h2>
+        <div>
+            <p>Tuition Fees: Rs. 1,00,000</p>
+            <p>Transport Fees: Rs. 30,000</p>
+            <p>Other Fees: Rs. 10,000</p>
+        </div>
+        <div class="table-container">
+            <h3>Payment Details</h3>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Receipt No</th>
+                    <th>Amount</th>
+                    <th>Balance</th>
+                </tr>
+                <tr>
+                    <td>06 June 2024</td>
+                    <td><a href="#">123456</a></td>
+                    <td>Rs:10,000</td>
+                    <td>Rs:1,30,000</td>
+                </tr>
+                <tr>
+                    <td>07 July 2024</td>
+                    <td><a href="#">123456</a></td>
+                    <td>Rs:30,000</td>
+                    <td>Rs:1,00,000</td>
+                </tr>
+                <tr>
+                    <td>09 August 2024</td>
+                    <td><a href="#">123456</a></td>
+                    <td>Rs:50,000</td>
+                    <td>Rs:50,000</td>
+                </tr>
+                <tr>
+                    <td>11 September 2024</td>
+                    <td><a href="#">123456</a></td>
+                    <td>Rs:10,000</td>
+                    <td>Rs:40,000</td>
+                </tr>
+                <tr>
+                    <td>06 October 2024</td>
+                    <td><a href="#">123456</a></td>
+                    <td>Rs:40,000</td>
+                    <td>Rs:0</td>
+                </tr>
+            </table>
+        </div>
+        <button class="back-button" onclick="navigateTo('mainPage')">Back</button>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="container">
+        <img src="https://c.stocksy.com/a/Jmn700/z9/1859647.jpg" alt="Profile Photo" style="width:120px; height:150px;">
+        <h2 class="name">GUNNALA SRAVANTHI YADAV</h2>
+    <h2 class="roll"> 23N81A05B5</h2>
+    <h3>date of brith: 25/12/2004</h3>
+    <h3>Phone Number: <a href="tel:6281652203">6281652203</a></h3>
+        <h3>Email: <a href="sravanthigunnala01@gmail.com">sravanthigunnala@gmail.com</a></h3>
+        <button class="de" onclick="navigateTo('mainPage')">Back</button>
+    </div>
+
+    <script>
+        function navigateTo(pageId) {
+            document.querySelectorAll('.container').forEach(function(page) {
+                page.classList.remove('visible');
+            });
+            document.getElementById(pageId).classList.add('visible');
+        }
+    </script>
+</body>
+</html>
